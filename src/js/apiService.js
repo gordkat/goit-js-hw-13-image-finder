@@ -4,21 +4,21 @@ const BASE_URL = 'https://pixabay.com/api';
 const apiService = {
   searchQuery: '',
   page: 1,
-  fetchByName: () => {
+  fetchByName() {
     const searchParams = new URLSearchParams({
-      q: apiService.searchQuery,
-      page: apiService.page,
+      q: this.searchQuery,
+      page: this.page,
       per_page: 12,
       key: API_KEY,
     });
     const url = `${BASE_URL}/?image_type=photo&orientation=horizontal&${searchParams}`;
     return fetch(url).then(response => response.json());
   },
-  nextPage: () => {
-    apiService.page += 1;
+  nextPage() {
+    this.page += 1;
   },
-  resetPage: () => {
-    apiService.page = 1;
+  resetPage() {
+    this.page = 1;
   },
 };
 
